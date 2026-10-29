@@ -11,7 +11,7 @@ Terminal based music downloader in C#.
 
 It downloads the music from YouTube using yt-dlp, and converts it to mp3 using ffmpeg. It then exports the downloaded music information to a JSON file.
 
-The project was created to work alongside with [Boombox](https://github.com/requiemkind/boombox).
+The project was created to work alongside with [Boombox Project](https://github.com/requiemkind/boombox).
 
 ### Requirements
 
@@ -40,8 +40,8 @@ or
 #### Option 2: Run from Source
 
     - Clone or download this repository.
-    - Open the project in Visual Studio.
-    - Run the application by pressing F5.
+    - Open the project in Visual Studio or preferred IDE.
+    - Run the application in your IDE.
 
 Downloaded songs are saved in the songs folder. The application scans this folder and updates songs.json with the available songs for the Boombox playlist.
 
