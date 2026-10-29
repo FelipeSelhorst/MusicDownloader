@@ -28,9 +28,13 @@ Make sure yt-dlp and FFmpeg are installed and accessible through your system's P
 
 #### Option 1: Download the Application
 
+[Download the v1.0.0 for Windows here.](https://github.com/FelipeSelhorst/MusicDownloader/releases/tag/v1.0.0)
+
+or
+
     - Go to the Releases page.
     - Download the latest Windows build.
-    - Extract the downloaded archive, if applicable.
+    - Extract the downloaded archive.
     - Install or configure the required dependencies (yt-dlp and FFmpeg).
     - Run MusicDownloader.exe and paste a YouTube URL when prompted.
 
