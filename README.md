@@ -1,6 +1,5 @@
-# MusicDownloader
-
 <div align="center">
+    <h1>MusicDownloader</h1>
     <img src="https://img.shields.io/badge/Version-1.0.0-blue" alt="Version">
     <img src="https://img.shields.io/badge/License-MIT-green" alt="License">
     <img src="https://img.shields.io/badge/Language-C%23-blue" alt="Language">
@@ -20,7 +19,7 @@ Before running the application, make sure you have the following installed on yo
 
     - yt-dlp.
     - FFmpeg.
-    - The .NET SDK required by the project.
+    - The .NET SDK required by the project (for option 2).
 
 Make sure yt-dlp and FFmpeg are installed and accessible through your system's PATH.
 
@@ -28,7 +27,7 @@ Make sure yt-dlp and FFmpeg are installed and accessible through your system's P
 
 #### Option 1: Download the Application
 
-[Download the v1.0.0 for Windows here.](https://github.com/FelipeSelhorst/MusicDownloader/releases/tag/v1.0.0)
+Download the latest version for Windows [here](https://github.com/FelipeSelhorst/MusicDownloader/releases/tag/v1.0.0).
 
 or
 
