@@ -1,9 +1,9 @@
 # MusicDownloader
 
 <div align="center">
-    ![Version](https://img.shields.io/badge/Version-1.0.0-blue)
-    ![License](https://img.shields.io/badge/License-MIT-green)
-    ![Language](https://img.shields.io/badge/Language-C%23-blue)
+    <img src="https://img.shields.io/badge/Version-1.0.0-blue" alt="Version">
+    <img src="https://img.shields.io/badge/License-MIT-green" alt="License">
+    <img src="https://img.shields.io/badge/Language-C%23-blue" alt="Language">
 </div>
 
 <br>
