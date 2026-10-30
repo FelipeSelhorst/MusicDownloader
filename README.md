@@ -81,7 +81,7 @@ The exact path depends on your project configuration and target framework.
     - yt-dlp is used for downloading music from YouTube.
     - FFmpeg is used for converting the downloaded music to mp3.
     - The playlist is stored in songs/songs.json.
-    - Existing songs are added to the playlist without duplicated entries based on their filenames.
+    - If you download an existing song, it will replace the old version so there are no duplicates.
 
 <h2 align="center">Contributing</h2>
 
