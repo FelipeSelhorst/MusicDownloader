@@ -52,7 +52,7 @@ When everything is completed, verify the installation:
 
 ### Option 1: Download the Application
 
-Download the latest version for Windows [here](https://github.com/FelipeSelhorst/MusicDownloader/releases/tag/v1.0.0).
+Download the latest version for Windows [here](https://github.com/FelipeSelhorst/MusicDownloader/releases).
 
     - Go to the Releases page.
     - Download the latest Windows build.
