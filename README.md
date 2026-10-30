@@ -1,6 +1,6 @@
 <div align="center">
     <h1>MusicDownloader</h1>
-    <img src="https://img.shields.io/badge/Version-1.0.0-blue" alt="Version">
+    <img src="https://img.shields.io/badge/Version-1.1.0-blue" alt="Version">
     <img src="https://img.shields.io/badge/License-MIT-green" alt="License">
     <img src="https://img.shields.io/badge/Language-C%23-blue" alt="Language">
 </div>
@@ -21,13 +21,13 @@ Before running the application, make sure you have the following installed on yo
     - FFmpeg.
     - .NET SDK 10.
 
-Make sure yt-dlp and FFmpeg are installed and accessible through your system's PATH.
+Make sure yt-dlp and FFmpeg are installed and accessible through your system's PATH, otherwise the application will not work correctly.
 
 ### How to install the requirements using winget
 
-In your preferred terminal, run the following commands to install
+In your preferred terminal, run the following commands:
 
-<strong>yt-dlp + FFmpeg:</strong>
+For <strong>yt-dlp & FFmpeg</strong>:
 
     winget install --source winget --id yt-dlp.yt-dlp
 
@@ -42,7 +42,7 @@ If <strong>FFmpeg</strong> does not install automatically, you can install it se
 > - Type "y" when asked to agree to the license terms and start the download.
 > - Follow the instructions given by the installer to complete the installation.
 
-When everything is completed, verify the installation with:
+When everything is completed, verify the installation:
 
     ffmpeg -version
     yt-dlp --version
@@ -82,3 +82,7 @@ The exact path depends on your project configuration and target framework.
     - FFmpeg is used for converting the downloaded music to mp3.
     - The playlist is stored in songs/songs.json.
     - Existing songs are added to the playlist without duplicated entries based on their filenames.
+
+<h2 align="center">Contributing</h2>
+
+Feel free to fork the repository and submit pull requests. For major changes, please open an issue first to discuss what you would like to change.
