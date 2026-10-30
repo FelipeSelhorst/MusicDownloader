@@ -19,7 +19,7 @@ Before running the application, make sure you have the following installed on yo
 
     - yt-dlp.
     - FFmpeg.
-    - The .NET SDK required by the project (for option 2).
+    - The .NET SDK required by the project.
 
 Make sure yt-dlp and FFmpeg are installed and accessible through your system's PATH.
 

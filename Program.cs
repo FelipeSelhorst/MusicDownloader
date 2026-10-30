@@ -15,15 +15,16 @@ string url = Console.ReadLine()?.Trim() ?? "";
 if (!string.IsNullOrWhiteSpace(url))
 {
     downloadResult = DownloadYT(url);
+
+    if (downloadResult?.Success == false)
+    {
+        Console.WriteLine("Download failed. Continuing with existing songs...");
+    }
 }
 
 List<string> currentSongs = ScanMusicFolder();
 
-foreach (string song in currentSongs)
-{
-    string title = Path.GetFileNameWithoutExtension(song);
-    AddSong(title, song);
-}
+SyncPlaylist(currentSongs);
 
 Console.WriteLine(
     $"\n--- Current Player Playlist ({currentSongs.Count} songs) ---");
@@ -58,6 +59,8 @@ DownloadResult? DownloadYT(string url)
         "--extract-audio",
         "--audio-format", "mp3",
         "--audio-quality", "192K",
+        "--windows-filenames",
+        "--trim-filenames", "180",
         "--output", "%(title)s.%(ext)s",
         url
     };
@@ -144,25 +147,26 @@ PlaylistData GetPlaylist()
     }
 }
 
-void AddSong(string songTitle, string filename)
+void SyncPlaylist(List<string> songs)
 {
     PlaylistData data = GetPlaylist();
 
-    bool alreadyExists = data.Playlist.Any(song =>
-        string.Equals(
-            song.File,
-            filename,
-            StringComparison.OrdinalIgnoreCase));
+    var existingFiles = new HashSet<string>(
+        data.Playlist.Select(song => song.File),
+        StringComparer.OrdinalIgnoreCase
+    );
 
-    if (!alreadyExists)
+    foreach (string filename in songs)
     {
-        data.Playlist.Add(new Song
+        if (existingFiles.Add(filename))
         {
-            Title = songTitle,
-            File = filename
-        });
+            data.Playlist.Add(new Song
+            {
+                Title = Path.GetFileNameWithoutExtension(filename),
+                File = filename
+            });
+        }
     }
-
     var options = new JsonSerializerOptions
     {
         WriteIndented = true
