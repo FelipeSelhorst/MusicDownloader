@@ -1,5 +1,4 @@
-﻿
-using System.Diagnostics;
+﻿using System.Diagnostics;
 using System.Text.Json;
 
 const string MusicFolder = "songs";
@@ -35,6 +34,12 @@ for (int i = 0; i < currentSongs.Count; i++)
 }
 
 Console.WriteLine("\nDone!");
+
+if (!Console.IsInputRedirected)
+{
+    Console.WriteLine("Press any key to exit... ");
+    Console.ReadKey(true);
+}
 
 DownloadResult? DownloadYT(string url)
 {
