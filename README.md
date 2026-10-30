@@ -1,6 +1,6 @@
 <div align="center">
     <h1>MusicDownloader</h1>
-    <img src="https://img.shields.io/badge/Version-1.1.0-blue" alt="Version">
+    <img src="https://img.shields.io/badge/Version-1.2.0-blue" alt="Version">
     <img src="https://img.shields.io/badge/License-MIT-green" alt="License">
     <img src="https://img.shields.io/badge/Language-C%23-blue" alt="Language">
 </div>

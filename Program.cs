@@ -12,33 +12,45 @@ var musicLibrary = new MusicLibrary(MusicFolder);
 var playlistService = new PlaylistService(
     Path.Combine(MusicFolder, "songs.json"));
 
-Console.Write("Please paste your URL: ");
+Console.WriteLine("================================");
+Console.WriteLine("       MUSIC DOWNLOADER");
+Console.WriteLine("================================");
 
-string url = Console.ReadLine()?.Trim() ?? string.Empty;
-
-if (!string.IsNullOrWhiteSpace(url))
+while (true)
 {
-    var result = await downloader.DownloadAsync(url);
+    Console.Write("\nPaste a video or playlist URL (\"exit\" to quit): ");
 
-    if (!result.Success)
+    string url = Console.ReadLine()?.Trim() ?? string.Empty;
+
+    if (url.Equals("exit", StringComparison.OrdinalIgnoreCase))
     {
-        Console.WriteLine(
-            $"Download failed: {result.ErrorMessage}");
-
-        Console.WriteLine(
-            "Continuing with existing songs...");
+        break;
     }
+
+    if (!string.IsNullOrWhiteSpace(url))
+    {
+        var result = await downloader.DownloadAsync(url);
+
+        if (!result.Success)
+        {
+            Console.WriteLine(
+                $"Download failed: {result.ErrorMessage}");
+
+            Console.WriteLine(
+                "Continuing with existing songs...");
+        }
+    }
+    else
+    {
+        Console.WriteLine("No URL provided. Exiting.");
+    }
+
+    List<string> songs = musicLibrary.GetSongs();
+
+    playlistService.Sync(songs);
+
+    DisplayPlaylist(songs);
 }
-else
-{
-    Console.WriteLine("No URL provided. Exiting.");
-}
-
-List<string> songs = musicLibrary.GetSongs();
-
-playlistService.Sync(songs);
-
-DisplayPlaylist(songs);
 
 Console.WriteLine("\nProgram finished!");
 
