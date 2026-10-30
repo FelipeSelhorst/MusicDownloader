@@ -13,23 +13,46 @@ It downloads the music from YouTube using yt-dlp, and converts it to mp3 using f
 
 The project was created to work alongside with [Boombox Project](https://github.com/requiemkind/boombox).
 
-### Requirements
+<h2 align="center">Requirements</h2>
 
 Before running the application, make sure you have the following installed on your machine:
 
     - yt-dlp.
     - FFmpeg.
-    - The .NET SDK required by the project.
+    - .NET SDK 10.
 
 Make sure yt-dlp and FFmpeg are installed and accessible through your system's PATH.
 
-### How to Use
+### How to install the requirements using winget
 
-#### Option 1: Download the Application
+In your preferred terminal, run the following commands to install
+
+<strong>yt-dlp + FFmpeg:</strong>
+
+    winget install --source winget --id yt-dlp.yt-dlp
+
+If <strong>FFmpeg</strong> does not install automatically, you can install it separately:
+
+    winget install -e --id Gyan.FFmpeg
+
+<strong>.NET SDK 10</strong>
+
+    winget install -e --id Microsoft.DotNet.SDK.10
+
+> - Type "y" when asked to agree to the license terms and start the download.
+> - Follow the instructions given by the installer to complete the installation.
+
+When everything is completed, verify the installation with:
+
+    ffmpeg -version
+    yt-dlp --version
+    dotnet --version
+
+<h2 align="center">How to Use</h2>
+
+### Option 1: Download the Application
 
 Download the latest version for Windows [here](https://github.com/FelipeSelhorst/MusicDownloader/releases/tag/v1.0.0).
-
-or
 
     - Go to the Releases page.
     - Download the latest Windows build.
@@ -37,7 +60,7 @@ or
     - Install or configure the required dependencies (yt-dlp and FFmpeg).
     - Run MusicDownloader.exe and paste a YouTube URL when prompted.
 
-#### Option 2: Run from Source
+### Option 2: Run from Source
 
     - Clone or download this repository.
     - Open the project in Visual Studio or preferred IDE.
@@ -45,15 +68,15 @@ or
 
 Downloaded songs are saved in the songs folder. The application scans this folder and updates songs.json with the available songs for the Boombox playlist.
 
-### Build Output
+<h2 align="center">Build Output</h2>
 
-When you build or run the project in Visual Studio, the executable is typically generated in a directory similar to:
+When you build or run the project through an IDE, the executable is typically generated in a directory similar to:
 
-bin/Debug/net10.0/
+`bin/Debug/net10.0/`
 
 The exact path depends on your project configuration and target framework.
 
-### Notes
+<h2 align="center">Notes</h2>
 
     - yt-dlp is used for downloading music from YouTube.
     - FFmpeg is used for converting the downloaded music to mp3.
