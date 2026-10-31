@@ -12,7 +12,6 @@ public class MusicLibrary
     {
         ".mp3",
         ".wav",
-        ".mp4",
         ".flac"
     };
 

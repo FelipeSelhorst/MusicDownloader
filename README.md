@@ -1,6 +1,6 @@
 <div align="center">
     <h1>MusicDownloader</h1>
-    <img src="https://img.shields.io/badge/Version-1.2.0-blue" alt="Version">
+    <img src="https://img.shields.io/badge/Version-1.3.0-blue" alt="Version">
     <img src="https://img.shields.io/badge/License-MIT-green" alt="License">
     <img src="https://img.shields.io/badge/Language-C%23-blue" alt="Language">
 </div>
@@ -9,7 +9,7 @@
 
 Terminal based music downloader in C#.
 
-It downloads the music from YouTube using yt-dlp, and converts it to mp3 using ffmpeg. It then exports the downloaded music information to a JSON file.
+It downloads the music from YouTube using yt-dlp, and converts it to mp3 using FFmpeg. It then exports the downloaded music information to a JSON file.
 
 The project was created to work alongside with [Boombox Project](https://github.com/requiemkind/boombox).
 
@@ -22,6 +22,8 @@ Before running the application, make sure you have the following installed on yo
     - .NET SDK 10.
 
 Make sure yt-dlp and FFmpeg are installed and accessible through your system's PATH, otherwise the application will not work correctly.
+
+If you installed using `pip` on a python environment, it will not work. You need it to be installed directly in your `C:/` for it to work properly. We recommend you using winget.
 
 ### How to install the requirements using winget
 
@@ -83,6 +85,14 @@ The exact path depends on your project configuration and target framework.
     - The playlist is stored in songs/songs.json.
     - If you download an existing song, it will replace the old version so there are no duplicates.
 
-<h2 align="center">Contributing</h2>
+<h2 align="center">Project Information</h2>
+
+### Contributing
 
 Feel free to fork the repository and submit pull requests. For major changes, please open an issue first to discuss what you would like to change.
+
+### Disclaimer
+
+    - This project is not affiliated with, endorsed by, or associated with YouTube or Spotify. It is intended for personal use only. Please respect the terms of service of these platforms when using this application.
+    - This project is provided "as is", without any warranties or guarantees. Use it at your own risk.
+    - This project is non-commercial and is not intended to generate revenue or financial profit.
