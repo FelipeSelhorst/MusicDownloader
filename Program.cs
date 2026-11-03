@@ -22,6 +22,22 @@ while (true)
 
     string url = Console.ReadLine()?.Trim() ?? string.Empty;
 
+    //var urlHandler = new UriHandler();
+
+    //var urlInfo = urlHandler.UrlHandler(url);
+
+    //if (urlInfo is null)
+    //{
+    //    Console.WriteLine("Unsupported URL.");
+    //    continue;
+    //}
+
+    //Console.WriteLine($"Platform: {urlInfo.Host}");
+    //Console.WriteLine($"Resource: {urlInfo.Resource}");
+    //Console.WriteLine($"ID: {urlInfo.Id}");
+
+
+
     if (url.Equals("exit", StringComparison.OrdinalIgnoreCase))
     {
         break;
