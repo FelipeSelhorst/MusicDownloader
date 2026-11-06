@@ -11,6 +11,10 @@ public class UrlHandler
         if (!Uri.TryCreate(url, UriKind.Absolute, out Uri? uri))
             return null;
 
+        if (uri.Scheme != Uri.UriSchemeHttp &&
+            uri.Scheme != Uri.UriSchemeHttps)
+            return null;
+
         string host = uri.Host;
         string path = uri.AbsolutePath;
 

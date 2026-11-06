@@ -18,31 +18,33 @@ Console.WriteLine("================================");
 
 while (true)
 {
-    Console.Write("\nPaste a video or playlist URL (\"exit\" to quit): ");
+
+    // User input
+    Console.Write("\nPaste a URL (\"exit\" to quit): ");
 
     string url = Console.ReadLine()?.Trim() ?? string.Empty;
 
-    //var urlHandler = new UrlHandler();
-
-    //var urlInfo = urlHandler.GetUrlInfo(url);
-
-    //if (urlInfo is null)
-    //{
-    //    Console.WriteLine("Unsupported URL.");
-    //    continue;
-    //}
-
-    //Console.WriteLine($"Platform: {urlInfo.Platform}");
-    //Console.WriteLine($"Resource: {urlInfo.ResourceType}");
-    //Console.WriteLine($"ID: {urlInfo.Id}");
-
-
-
     if (url.Equals("exit", StringComparison.OrdinalIgnoreCase))
-    {
         break;
+
+
+    // UrlHandler
+    var urlHandler = new UrlHandler();
+
+    var urlInfo = urlHandler.GetUrlInfo(url);
+
+    if (urlInfo is null)
+    {
+        Console.WriteLine("Unsupported URL.");
+        continue;
     }
 
+    Console.WriteLine($"\nPlatform: {urlInfo.Platform}");
+    Console.WriteLine($"Resource: {urlInfo.ResourceType}");
+    Console.WriteLine($"ID: {urlInfo.Id}\n");
+
+
+    // Download the resource
     if (!string.IsNullOrWhiteSpace(url))
     {
         var result = await downloader.DownloadAsync(url);
@@ -68,6 +70,7 @@ while (true)
     DisplayPlaylist(songs);
 }
 
+// End the program
 Console.WriteLine("\nProgram finished!");
 
 if (!Console.IsInputRedirected)
@@ -76,6 +79,7 @@ if (!Console.IsInputRedirected)
     Console.ReadKey(true);
 }
 
+// Display Playlist
 static void DisplayPlaylist(List<string> songs)
 {
     Console.WriteLine(

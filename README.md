@@ -1,6 +1,6 @@
 <div align="center">
     <h1>MusicDownloader</h1>
-    <img src="https://img.shields.io/badge/Version-1.3.1-blue" alt="Version">
+    <img src="https://img.shields.io/badge/Version-1.3.2-blue" alt="Version">
     <img src="https://img.shields.io/badge/License-MIT-green" alt="License">
     <img src="https://img.shields.io/badge/Language-C%23-blue" alt="Language">
 </div>
@@ -83,7 +83,7 @@ The exact path depends on your project configuration and target framework.
     - yt-dlp is used for downloading music from YouTube.
     - FFmpeg is used for converting the downloaded music to mp3.
     - The playlist is stored in songs/songs.json.
-    - If you download an existing song, it will replace the old version so there are no duplicates.
+    - If you try to download an existing song, it will recognize it in your playlist and skip the download.
 
 <h2 align="center">Project Information</h2>
 
