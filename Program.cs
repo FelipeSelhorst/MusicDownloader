@@ -22,9 +22,9 @@ while (true)
 
     string url = Console.ReadLine()?.Trim() ?? string.Empty;
 
-    //var urlHandler = new UriHandler();
+    //var urlHandler = new UrlHandler();
 
-    //var urlInfo = urlHandler.UrlHandler(url);
+    //var urlInfo = urlHandler.GetUrlInfo(url);
 
     //if (urlInfo is null)
     //{
@@ -32,8 +32,8 @@ while (true)
     //    continue;
     //}
 
-    //Console.WriteLine($"Platform: {urlInfo.Host}");
-    //Console.WriteLine($"Resource: {urlInfo.Resource}");
+    //Console.WriteLine($"Platform: {urlInfo.Platform}");
+    //Console.WriteLine($"Resource: {urlInfo.ResourceType}");
     //Console.WriteLine($"ID: {urlInfo.Id}");
 
 

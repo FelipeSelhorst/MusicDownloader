@@ -9,5 +9,6 @@ public enum MusicResourceType
     Unknown,
     Track,
     Playlist,
-    Video
+    Video,
+    Album
 }
