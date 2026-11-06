@@ -17,6 +17,7 @@ public class UrlHandler
         // YouTube
         if (host == "youtube.com" ||
             host == "www.youtube.com" ||
+            host == "music.youtube.com" ||
             host == "youtu.be")
         {
             var query = HttpUtility.ParseQueryString(uri.Query);
