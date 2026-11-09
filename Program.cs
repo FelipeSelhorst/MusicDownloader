@@ -43,6 +43,8 @@ while (true)
     Console.WriteLine($"Resource: {urlInfo.ResourceType}");
     Console.WriteLine($"ID: {urlInfo.Id}\n");
 
+    Console.WriteLine("Reading URL... (This could take a while)");
+
 
     // Download the resource
     if (!string.IsNullOrWhiteSpace(url))
@@ -70,15 +72,6 @@ while (true)
     DisplayPlaylist(songs);
 }
 
-// End the program
-Console.WriteLine("\nProgram finished!");
-
-if (!Console.IsInputRedirected)
-{
-    Console.WriteLine("Press any key to exit...");
-    Console.ReadKey(true);
-}
-
 // Display Playlist
 static void DisplayPlaylist(List<string> songs)
 {
@@ -89,4 +82,13 @@ static void DisplayPlaylist(List<string> songs)
     {
         Console.WriteLine($"{i + 1}. {songs[i]}");
     }
+}
+
+// End the program
+Console.WriteLine("\nProgram finished!");
+
+if (!Console.IsInputRedirected)
+{
+    Console.WriteLine("Press any key to exit...");
+    Console.ReadKey(true);
 }
