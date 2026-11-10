@@ -12,6 +12,19 @@ var musicLibrary = new MusicLibrary(MusicFolder);
 var playlistService = new PlaylistService(
     Path.Combine(MusicFolder, "songs.json"));
 
+static void loading()
+{
+    string[] frames = { "|", "/", "-", "\\" };
+    int i = 0;
+
+    while (true)
+    {
+        Console.Write($"\r{frames[i % frames.Length]} Reading URL... (This could take a while)");
+        i++;
+        Thread.Sleep(150);
+    }
+}
+
 Console.WriteLine("================================");
 Console.WriteLine("       MUSIC DOWNLOADER");
 Console.WriteLine("================================");
@@ -43,8 +56,7 @@ while (true)
     Console.WriteLine($"Resource: {urlInfo.ResourceType}");
     Console.WriteLine($"ID: {urlInfo.Id}\n");
 
-    Console.WriteLine("Reading URL... (This could take a while)");
-
+    loading();
 
     // Download the resource
     if (!string.IsNullOrWhiteSpace(url))
