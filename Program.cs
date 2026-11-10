@@ -1,4 +1,5 @@
-﻿using MusicDownloader.Services;
+﻿using MusicDownloader.Models;
+using MusicDownloader.Services;
 using MusicDownloader.Services.Downloaders;
 
 const string MusicFolder = "songs";
@@ -12,22 +13,36 @@ var musicLibrary = new MusicLibrary(MusicFolder);
 var playlistService = new PlaylistService(
     Path.Combine(MusicFolder, "songs.json"));
 
-static void loading()
+static async Task Loading(CancellationToken token)
 {
     string[] frames = { "|", "/", "-", "\\" };
     int i = 0;
 
-    while (true)
+    const string message = "Reading URL... (This could take a while)";
+
+    try
     {
-        Console.Write($"\r{frames[i % frames.Length]} Reading URL... (This could take a while)");
-        i++;
-        Thread.Sleep(150);
+        while (true)
+        {
+            Console.Write($"\r{frames[i++ % frames.Length]} {message}");
+            await Task.Delay(150, token);
+        }
+    }
+    catch (OperationCanceledException)
+    {
+        // Loading finished, exit the loop
+    }
+    finally
+    {
+        Console.WriteLine("\r" + new string(' ', message.Length + 3) + "\r");
     }
 }
 
 Console.WriteLine("================================");
 Console.WriteLine("       MUSIC DOWNLOADER");
 Console.WriteLine("================================");
+
+var urlHandler = new UrlHandler();
 
 while (true)
 {
@@ -41,9 +56,7 @@ while (true)
         break;
 
 
-    // UrlHandler
-    var urlHandler = new UrlHandler();
-
+    // Verify URL
     var urlInfo = urlHandler.GetUrlInfo(url);
 
     if (urlInfo is null)
@@ -56,12 +69,32 @@ while (true)
     Console.WriteLine($"Resource: {urlInfo.ResourceType}");
     Console.WriteLine($"ID: {urlInfo.Id}\n");
 
-    loading();
+    using var cts = new CancellationTokenSource();
+
+    Task loadingTask = Loading(cts.Token);
+
+    DownloadResult result;
+
+    try
+    {
+        result = await downloader.DownloadAsync(url);
+    }
+    finally
+    {
+        cts.Cancel();
+        await loadingTask;
+    }
+
+    if (!result.Success)
+    {
+        Console.WriteLine($"Download failed: {result.ErrorMessage}");
+        Console.WriteLine($"Continuing with existing songs...");
+    }
 
     // Download the resource
     if (!string.IsNullOrWhiteSpace(url))
     {
-        var result = await downloader.DownloadAsync(url);
+        //var result = await downloader.DownloadAsync(url);
 
         if (!result.Success)
         {
