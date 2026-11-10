@@ -12,6 +12,31 @@ public class YoutubeDownloader
         _musicFolder = musicFolder;
     }
 
+    private async Task Loading(CancellationToken token)
+    {
+        string[] frames = { "|", "/", "-", "\\" };
+        int i = 0;
+
+        const string message = "Reading URL... (This could take a while)";
+
+        try
+        {
+            while (!token.IsCancellationRequested)
+            {
+                Console.Write($"\r{frames[i++ % frames.Length]} {message}");
+                await Task.Delay(150, token);
+            }
+        }
+        catch (OperationCanceledException)
+        {
+            // Loading finished, exit the loop
+        }
+        finally
+        {
+            Console.Write("\r" + new string(' ', message.Length + 3) + "\r");
+        }
+    }
+
     public bool CanHandle(string url)
     {
         return url.Contains("youtube.com",
@@ -23,7 +48,22 @@ public class YoutubeDownloader
 
     public async Task<DownloadResult> DownloadAsync(string url)
     {
-        string? musicName = await GetVideoTitleAsync(url);
+        string? musicName;
+
+        using (var cts = new CancellationTokenSource())
+        {
+            Task loadingTask = Loading(cts.Token);
+            
+            try
+            {
+                musicName = await GetVideoTitleAsync(url);
+            }
+            finally
+            {
+                cts.Cancel();
+                await loadingTask;
+            }
+        }
 
         Console.WriteLine($"Starting download for: \"{musicName ?? url}\"");
 

@@ -13,31 +13,6 @@ var musicLibrary = new MusicLibrary(MusicFolder);
 var playlistService = new PlaylistService(
     Path.Combine(MusicFolder, "songs.json"));
 
-static async Task Loading(CancellationToken token)
-{
-    string[] frames = { "|", "/", "-", "\\" };
-    int i = 0;
-
-    const string message = "Reading URL... (This could take a while)";
-
-    try
-    {
-        while (true)
-        {
-            Console.Write($"\r{frames[i++ % frames.Length]} {message}");
-            await Task.Delay(150, token);
-        }
-    }
-    catch (OperationCanceledException)
-    {
-        // Loading finished, exit the loop
-    }
-    finally
-    {
-        Console.WriteLine("\r" + new string(' ', message.Length + 3) + "\r");
-    }
-}
-
 Console.WriteLine("================================");
 Console.WriteLine("       MUSIC DOWNLOADER");
 Console.WriteLine("================================");
@@ -69,21 +44,7 @@ while (true)
     Console.WriteLine($"Resource: {urlInfo.ResourceType}");
     Console.WriteLine($"ID: {urlInfo.Id}\n");
 
-    using var cts = new CancellationTokenSource();
-
-    Task loadingTask = Loading(cts.Token);
-
-    DownloadResult result;
-
-    try
-    {
-        result = await downloader.DownloadAsync(url);
-    }
-    finally
-    {
-        cts.Cancel();
-        await loadingTask;
-    }
+    DownloadResult result = await downloader.DownloadAsync(url);
 
     if (!result.Success)
     {
